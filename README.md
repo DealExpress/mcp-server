@@ -1,6 +1,6 @@
 # @dealx/mcp-server
 
-This is a Model Context Protocol (MCP) server for the [DealX platform](https://dealx.com.ua). It allows other LLMs to interact with the [DealX platform](https://dealx.com.ua), specifically to search for ads.
+This is a Model Context Protocol (MCP) server for the [DealX platform](https://dealx.com.ua). It allows LLMs to interact with the DealX platform, specifically to search for ads.
 
 ## Table of Contents
 
@@ -18,7 +18,7 @@ The DealX MCP Server implements the [Model Context Protocol](https://github.com/
 
 ### What is MCP?
 
-The Model Context Protocol (MCP) is a standardized way for LLMs to interact with external systems. It provides a structured interface for LLMs to access data and perform actions in the real world. This server implements the MCP specification to allow LLMs to interact with the [DealX platform](https://dealx.com.ua).
+The Model Context Protocol (MCP) is a standardized way for LLMs to interact with external systems. It provides a structured interface for LLMs to access data and perform actions in the real world. This server implements the MCP specification to allow LLMs to interact with the DealX platform.
 
 ## Installation
 
@@ -26,6 +26,37 @@ The Model Context Protocol (MCP) is a standardized way for LLMs to interact with
 
 - Node.js (v20 or later)
 - npm (v11 or later)
+
+### MCP Configuration
+
+To use this server with an LLM like Claude, you need to add it to your LLM's MCP configuration:
+
+1. Open your LLM's MCP configuration file:
+
+   - **Claude Desktop App**:
+     - macOS: `~/Library/Application Support/Claude/claude_desktop_config.json`
+     - Windows: `%APPDATA%\Claude\claude_desktop_config.json`
+     - Linux: `~/.config/Claude/claude_desktop_config.json`
+   - **Cline (VS Code Extension)**:
+     - `~/Library/Application Support/Code/User/globalStorage/saoudrizwan.claude-dev/settings/cline_mcp_settings.json`
+
+2. Add the DealX MCP server to the `mcpServers` section:
+
+   ```json
+   {
+     "mcpServers": {
+       "dealx": {
+         "command": "npx",
+         "args": ["-y", "@dealx/mcp-server"],
+         "env": {
+           "DEALX_API_URL": "https://dealx.com.ua"
+         },
+         "disabled": false,
+         "autoApprove": []
+       }
+     }
+   }
+   ```
 
 ### Installation via npm
 
@@ -39,119 +70,89 @@ npm install -g @dealx/mcp-server
 
 If you want to modify the server or contribute to its development:
 
-- Clone the repository:
+1. Clone the repository:
 
-  ```shell
-  git clone <repository-url>
-  cd dealx/mcp
-  ```
+   ```shell
+   git clone <repository-url>
+   cd dealx/mcp
+   ```
 
-- Install dependencies:
+2. Install dependencies:
 
-  ```shell
-  npm install
-  ```
+   ```shell
+   npm install
+   ```
 
-- Create a `.env` file based on the `.env.example` file:
+3. Create a `.env` file based on the `.env.example` file:
 
-  ```shell
-  cp .env.example .env
-  ```
+   ```shell
+   cp .env.example .env
+   ```
 
-- Edit the `.env` file to set the appropriate values:
+4. Edit the `.env` file to set the appropriate values:
 
-  ```shell
-  # DealX API URL
-  DEALX_API_URL=http://localhost:3001
+   ```shell
+   # DealX API URL
+   DEALX_API_URL=http://localhost:3001
 
-  # Optional: Specify the port for the MCP server
-  MCP_SERVER_PORT=3100
+   # Optional: Specify the port for the MCP server
+   MCP_SERVER_PORT=3100
 
-  # Optional: Log level (debug, info, warn, error)
-  LOG_LEVEL=info
-  ```
+   # Optional: Log level (debug, info, warn, error)
+   LOG_LEVEL=info
+   ```
 
-- Build the server:
+5. Build the server:
 
-  ```shell
-  npm run build
-  ```
-
-### Configuration for LLM Users
-
-If you're using this server with an LLM like Claude, you'll need to add it to your LLM's MCP configuration. Here's how to do it for Claude:
-
-- Open your Claude desktop app configuration file:
-
-  - macOS: `~/Library/Application Support/Claude/claude_desktop_config.json`
-  - Windows: `%APPDATA%\Claude\claude_desktop_config.json`
-  - Linux: `~/.config/Claude/claude_desktop_config.json`
-
-- Add the DealX MCP server to the `mcpServers` section:
-
-  ```json
-  {
-    "mcpServers": {
-      "dealx": {
-        "command": "npx",
-        "args": ["-y", "@dealx/mcp-server"],
-        "env": {
-          "DEALX_API_URL": "https://dealx.com.ua"
-        },
-        "disabled": false,
-        "autoApprove": []
-      }
-    }
-  }
-  ```
+   ```shell
+   npm run build
+   ```
 
 ## Usage
 
 ### Starting the Server
 
-If you've installed the package globally, you can start the server with:
+You can run the server in several ways:
 
-```shell
-node node_modules/@dealx/mcp-server/build/index.js
-```
+1. If installed globally:
 
-You can also run it directly with npx without installing (after publishing to npm):
+   ```shell
+   node node_modules/@dealx/mcp-server/build/index.js
+   ```
 
-```shell
-npx -y @dealx/mcp-server
-```
+2. Using npx without installation:
 
-Environment variables can be passed directly:
+   ```shell
+   npx -y @dealx/mcp-server
+   ```
 
-```shell
-DEALX_API_URL=https://dealx.com.ua npx -y @dealx/mcp-server
-```
+3. With environment variables:
 
-If you're working with the development version, you can start the server with:
+   ```shell
+   DEALX_API_URL=https://dealx.com.ua npx -y @dealx/mcp-server
+   ```
 
-```shell
-npm start
-```
+4. For development:
 
-This will start the server using the configuration from your `.env` file.
+   ```shell
+   npm start
+   ```
 
-### Using the Server with an LLM
+### Using with an LLM
 
-Once the server is running and configured in your LLM's MCP configuration, you can use it to search for ads on the [DealX platform](https://dealx.com.ua).
+Once configured in your LLM's MCP settings, you can use natural language to interact with the DealX platform.
 
-Example prompt for Claude:
+Example prompts:
 
-```shell
-Search for ads on DealX with the query "laptop".
-```
-
-Claude will use the MCP server to search for ads and return the results.
+- "Search for ads on DealX with the query 'laptop'"
+- "Find the newest 5 ads for 'iPhone' on DealX"
+- "Search DealX for apartments in Kyiv"
 
 ## Available Tools
 
 ### search_ads
 
-Search for ads on the [DealX platform](https://dealx.com.ua).
+Search for ads on the DealX platform.
 
 **Parameters:**
 
@@ -160,7 +161,7 @@ Search for ads on the [DealX platform](https://dealx.com.ua).
 - `offset` (number, optional): Pagination offset (starts at 1, default: 1)
 - `limit` (number, optional): Number of results per page (max 100, default: 30)
 
-**Example:**
+**Example Usage:**
 
 ```json
 {
@@ -284,34 +285,14 @@ mcp/
 └── README.md           # This file
 ```
 
-### Development Workflow
+### npm Scripts
 
-- Make changes to the TypeScript files in the `src` directory
-- Build the server:
-
-  ```shell
-  npm run build
-  ```
-
-- Start the server:
-
-  ```shell
-  npm start
-  ```
-
-### Linting and Formatting
-
-To lint the code:
-
-```shell
-npm run lint
-```
-
-To format the code:
-
-```shell
-npm run format
-```
+- `npm run build` - Compile TypeScript to JavaScript
+- `npm start` - Start the server using the compiled JavaScript
+- `npm run dev` - Start the server in development mode with hot reloading
+- `npm run lint` - Lint the code using ESLint
+- `npm run format` - Format the code using Prettier
+- `npm test` - Run tests
 
 ## Troubleshooting
 
@@ -345,4 +326,4 @@ If the server can't connect to the DealX API:
 
 ### Getting Help
 
-If you encounter issues not covered here, please open an issue on the GitHub repository.
+If you encounter issues not covered here, please open an issue against this GitHub repository.

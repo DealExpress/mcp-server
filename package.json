@@ -1,6 +1,6 @@
 {
   "name": "@dealx/mcp-server",
-  "version": "0.1.5",
+  "version": "0.1.7",
   "description": "MCP Server for DealX platform",
   "type": "module",
   "main": "build/index.js",
@@ -46,5 +46,9 @@
     "eslint": "^9.23.0",
     "prettier": "^3.5.3",
     "typescript": "^5.8.2"
+  },
+  "packageManager": "npm@11.2.0",
+  "engines": {
+    "node": ">=20.0.0"
   }
 }
