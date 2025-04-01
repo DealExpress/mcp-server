@@ -14,7 +14,7 @@ This is a Model Context Protocol (MCP) server for the DealX platform. It allows 
 
 ## Overview
 
-The DealX MCP Server implements the [Model Context Protocol](https://github.com/modelcontextprotocol/typescript-sdk) to provide a standardized way for LLMs to interact with the DealX platform. Currently, it supports searching for ads, with plans to add more functionality in the future.
+The DealX MCP Server implements the [Model Context Protocol](https://github.com/modelcontextprotocol/typescript-sdk) to provide a standardized way for LLMs to interact with the [DealX platform](https://dealx.com.ua). Currently, it supports searching for ads, with plans to add more functionality in the future.
 
 ### What is MCP?
 
