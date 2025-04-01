@@ -29,6 +29,7 @@ export interface SanitizedAd {
   pinned: boolean;
   attachedImageUrls: string[];
   author: string;
+  link: string;
   expand?: {
     author?: SanitizedAuthor;
     tags?: SanitizedTag[];

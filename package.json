@@ -1,6 +1,6 @@
 {
   "name": "@dealx/mcp-server",
-  "version": "0.1.7",
+  "version": "0.1.9",
   "description": "MCP Server for DealX platform",
   "type": "module",
   "main": "build/index.js",

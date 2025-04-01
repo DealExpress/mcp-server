@@ -110,6 +110,7 @@ serverProcess.stdout.on("data", (data) => {
                 );
                 console.log(`Price: ${ad.price}`);
                 console.log(`Created: ${ad.created}`);
+                console.log(`Link: ${ad.link}`);
 
                 // Display author information if available
                 if (ad.expand && ad.expand.author) {
