@@ -1,6 +1,6 @@
 # @dealx/mcp-server
 
-This is a Model Context Protocol (MCP) server for the DealX platform. It allows other LLMs to interact with the DealX platform, specifically to search for ads.
+This is a Model Context Protocol (MCP) server for the [DealX platform](https://dealx.com.ua). It allows other LLMs to interact with the [DealX platform](https://dealx.com.ua), specifically to search for ads.
 
 ## Table of Contents
 
@@ -18,7 +18,7 @@ The DealX MCP Server implements the [Model Context Protocol](https://github.com/
 
 ### What is MCP?
 
-The Model Context Protocol (MCP) is a standardized way for LLMs to interact with external systems. It provides a structured interface for LLMs to access data and perform actions in the real world. This server implements the MCP specification to allow LLMs to interact with the DealX platform.
+The Model Context Protocol (MCP) is a standardized way for LLMs to interact with external systems. It provides a structured interface for LLMs to access data and perform actions in the real world. This server implements the MCP specification to allow LLMs to interact with the [DealX platform](https://dealx.com.ua).
 
 ## Installation
 
@@ -137,7 +137,7 @@ This will start the server using the configuration from your `.env` file.
 
 ### Using the Server with an LLM
 
-Once the server is running and configured in your LLM's MCP configuration, you can use it to search for ads on the DealX platform.
+Once the server is running and configured in your LLM's MCP configuration, you can use it to search for ads on the [DealX platform](https://dealx.com.ua).
 
 Example prompt for Claude:
 
@@ -151,7 +151,7 @@ Claude will use the MCP server to search for ads and return the results.
 
 ### search_ads
 
-Search for ads on the DealX platform.
+Search for ads on the [DealX platform](https://dealx.com.ua).
 
 **Parameters:**
 
@@ -260,7 +260,7 @@ The server is designed to be easily extended with additional tools. Here's how t
 
 The following tools are planned for future implementation:
 
-- `create_ad`: Create a new ad on the DealX platform
+- `create_ad`: Create a new ad on the [DealX platform](https://dealx.com.ua)
 - `edit_ad`: Edit an existing ad
 - `delete_ad`: Delete an ad
 - `get_threads`: Get discussion threads for an ad
