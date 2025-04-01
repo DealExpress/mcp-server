@@ -1,0 +1,50 @@
+{
+  "name": "@dealx/mcp-server",
+  "version": "0.1.3",
+  "description": "MCP Server for DealX platform",
+  "type": "module",
+  "main": "build/index.js",
+  "bin": {
+    "mcp-server": "build/index.js"
+  },
+  "exports": {
+    ".": "./build/index.js"
+  },
+  "files": [
+    "build/**/*",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc && chmod +x build/index.js",
+    "start": "node build/index.js",
+    "dev": "tsc -w",
+    "lint": "eslint src --ext .ts",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "deps:upgrade": "ncu -u && npm install",
+    "prepublishOnly": "npm run build"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "mcp",
+    "dealx",
+    "model-context-protocol"
+  ],
+  "author": "DealX Team",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.8.0",
+    "axios": "^1.8.4",
+    "dotenv": "^16.4.7"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.16",
+    "@typescript-eslint/eslint-plugin": "^8.29.0",
+    "@typescript-eslint/parser": "^8.29.0",
+    "eslint": "^9.23.0",
+    "prettier": "^3.5.3",
+    "typescript": "^5.8.2"
+  }
+}
